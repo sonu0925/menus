@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Singh Vada Pav | Mumbai Street-Style Goodness</title>
+  <meta name="description" content="Singh Vada Pav – Fresh, crispy vada pav and more. Order now!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0d10; /* charcoal */
+      --card:#131720; /* deep slate */
+      --muted:#8b94a7;
+      --brand:#ff7a18; /* saffron */
+      --brand-2:#ffd166; /* turmeric */
+      --ok:#22c55e; /* green */
+      --danger:#ef4444; /* red */
+      --ring: 0 0 0 2px rgba(255,122,24,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(180deg,#0b0d10,#0e1117 40%,#0b0d10);color:#e6e9ef;font-family:Poppins,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Layout */
+    .container{width:min(1100px,92vw);margin-inline:auto}
+    .grid{display:grid;gap:24px}
+
+    /* Navbar */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(11,13,16,.75);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px}
+    .brand .logo{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:radial-gradient(120% 120% at 30% 20%,var(--brand),var(--brand-2));box-shadow:0 8px 30px rgba(255,122,24,.4)}
+    .brand span{font-size:1.05rem}
+    .nav-links{display:flex;gap:14px;flex-wrap:wrap}
+    .nav-links a{padding:8px 12px;border-radius:12px;border:1px solid transparent}
+    .nav-links a:hover{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
+    .cta{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#121318; padding:10px 14px;border-radius:12px;font-weight:600; box-shadow:0 8px 24px rgba(255,122,24,.45)}
+
+    /* Hero */
+    .hero{padding:56px 0 32px}
+    .hero-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .hero h1{font-size:clamp(28px,4vw,44px);line-height:1.1;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 24px}
+    .hero .badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px dashed rgba(255,255,255,.18);border-radius:999px;color:#d3dae8}
+    .hero-card{background:conic-gradient(from 180deg at 50% 50%, #141927, #0f1420);border:1px solid rgba(255,255,255,.08);padding:18px;border-radius:var(--radius);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+
+    /* Sections */
+    section{padding:28px 0}
+    .section-header{display:flex;align-items:end;justify-content:space-between;margin-bottom:14px}
+    h2{font-size:clamp(22px,3vw,28px);margin:0}
+    .muted{color:var(--muted)}
+
+    /* Menu Cards */
+    .cards{display:grid;grid-template-columns:repeat( auto-fill, minmax(230px,1fr) );gap:18px}
+    .card{background:linear-gradient(160deg,#121824,#0c111a);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);overflow:hidden;transition:transform .15s ease, box-shadow .15s ease}
+    .card:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,0,0,.35)}
+    .thumb{aspect-ratio:4/3;background:#0a0d13;display:grid;place-items:center;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .card-body{padding:14px}
+    .title-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .title{font-weight:600}
+    .veg{display:inline-flex;align-items:center;gap:6px;font-size:.85rem}
+    .veg-dot{width:10px;height:10px;border-radius:3px;border:2px solid var(--ok)}
+    .price{font-weight:700;background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .desc{color:#aab2c4;margin:6px 0 12px;font-size:.92rem}
+    .card-actions{display:flex;gap:10px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#0f1420;color:#e9edf6;cursor:pointer}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#14161b;border:none}
+
+    /* About & Contact */
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .about img{border-radius:var(--radius);border:1px solid rgba(255,255,255,.08)}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .contact .card{padding:14px}
+
+    /* Admin Panel */
+    .admin-bar{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;flex-direction:column;gap:10px}
+    .fab{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#14161b;border:none;box-shadow:0 14px 38px rgba(255,122,24,.45);cursor:pointer}
+
+    dialog{border:none;border-radius:20px;padding:0;background:#0f1420;color:#e6e9ef;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+    .modal{width:min(920px,92vw)}
+    .modal header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.06)}
+    .modal .body{padding:16px 18px}
+    .close{background:transparent;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:8px 10px;color:#e6e9ef;cursor:pointer}
+    .form-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-size:.9rem;color:#b9c0cf}
+    .field input,.field select,.field textarea{background:#0b0f17;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 12px;color:#e6e9ef;outline:none}
+    .field textarea{min-height:64px;resize:vertical}
+    .full{grid-column:span 12}
+    .six{grid-column:span 6}
+    .four{grid-column:span 4}
+
+    .table{width:100%;border-collapse:separate;border-spacing:0 10px}
+    .table th{font-weight:600;text-align:left;color:#aeb7c8}
+    .table td, .table th{padding:10px 8px}
+    .row{background:#111726;border:1px solid rgba(255,255,255,.08);border-radius:14px}
+
+    .pill{padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);font-size:.85rem;color:#cbd3e6}
+
+    /* Footer */
+    footer{border-top:1px solid rgba(255,255,255,.06);margin-top:24px;padding:24px 0;color:#aab2c4}
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero-wrap{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav -->
+  <nav id="top" class="nav">
+    <div class="container nav-wrap">
+      <a href="#top" class="brand">
+        <span class="logo"><i class="ri-bread-line" aria-hidden="true"></i></span>
+        <span>Singh Vada Pav</span>
+      </a>
+      <div class="nav-links">
+        <a href="#menu"><i class="ri-restaurant-2-line"></i> Menu</a>
+        <a href="#about"><i class="ri-information-line"></i> About</a>
+        <a href="#contact"><i class="ri-phone-line"></i> Contact</a>
+        <a id="adminLink" href="#admin"><i class="ri-settings-3-line"></i> Admin</a>
+        <a class="cta" href="#order"><i class="ri-shopping-bag-3-line"></i>&nbsp;Order Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container hero-wrap">
+      <div>
+        <div class="badges">
+          <span class="badge"><i class="ri-fire-line"></i> Freshly Fried</span>
+          <span class="badge"><i class="ri-leaf-line"></i> 100% Veg</span>
+          <span class="badge"><i class="ri-timer-flash-line"></i> Ready in 5 min</span>
+        </div>
+        <h1>Mumbai street-style <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">vada pav</span>—made with love.</h1>
+        <p class="muted">Crispy batata vada, soft pav, zingy chutneys. Add cheese or go full Schezwan heat—we’ve got you.</p>
+        <div class="card-actions">
+          <a class="btn primary" href="#menu"><i class="ri-restaurant-line"></i> Explore Menu</a>
+          <a class="btn" href="#order"><i class="ri-whatsapp-line"></i> WhatsApp Order</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img alt="Plated vada pav with chutneys" src="https://images.unsplash.com/photo-1628692947217-6b7a3e02aa87?q=80&w=1200&auto=format&fit=crop" />
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Section -->
+  <section id="menu">
+    <div class="container">
+      <div class="section-header">
+        <h2><i class="ri-restaurant-2-line"></i> Menu</h2>
+        <div>
+          <select id="categoryFilter" class="pill">
+            <option value="all">All Categories</option>
+          </select>
+        </div>
+      </div>
+      <div id="menuGrid" class="cards" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container about">
+      <div>
+        <h2><i class="ri-information-line"></i> About Singh Vada Pav</h2>
+        <p class="muted">Started in 2025 with a simple goal: serve iconic Mumbai flavors at honest prices. We use fresh potatoes, in-house spice blends and daily-baked pav. Our chutneys are ground every morning for maximum zing.</p>
+        <ul class="muted">
+          <li>Open daily: 10:00 – 10:00</li>
+          <li>Location: Near Main Market, Your City</li>
+          <li>Delivery partners: In-store pickup & local delivery</li>
+        </ul>
+      </div>
+      <img alt="Kitchen action" src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop" />
+    </div>
+  </section>
+
+  <!-- Contact / Order -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2><i class="ri-phone-line"></i> Contact & Order</h2>
+      </div>
+      <div class="contact">
+        <div class="card">
+          <div class="card-body">
+            <h3>Call</h3>
+            <p class="muted">+91 90000 00000</p>
+            <a class="btn" href="tel:+919000000000"><i class="ri-phone-fill"></i> Call Now</a>
+          </div>
+        </div>
+        <div class="card" id="order">
+          <div class="card-body">
+            <h3>WhatsApp</h3>
+            <p class="muted">Tap to open a pre-filled cart.</p>
+            <a id="waBtn" class="btn primary" href="#"><i class="ri-whatsapp-line"></i> WhatsApp Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">© <span id="year"></span> Singh Vada Pav. All rights reserved.</div>
+  </footer>
+
+  <!-- Floating Admin Buttons -->
+  <div class="admin-bar" aria-live="polite">
+    <button id="openAdmin" class="fab" title="Admin Panel (password)"><i class="ri-tools-line"></i></button>
+    <button id="quickAdd" class="fab" title="Quick add item"><i class="ri-add-line"></i></button>
+  </div>
+
+  <!-- Admin Modal -->
+  <dialog id="adminModal" class="modal">
+    <header>
+      <strong><i class="ri-settings-3-line"></i> Admin Panel</strong>
+      <div style="display:flex; gap:8px; align-items:center">
+        <button id="exportBtn" class="btn">Export JSON</button>
+        <label class="btn" for="importInput" style="cursor:pointer">Import JSON<input id="importInput" type="file" accept="application/json" hidden></label>
+        <button id="closeAdmin" class="close" aria-label="Close">Close</button>
+      </div>
+    </header>
+    <div class="body">
+      <div class="grid" style="gap:16px">
+        <form id="itemForm" class="form-grid" autocomplete="off">
+          <div class="field six">
+            <label for="name">Item name</label>
+            <input id="name" required placeholder="Cheese Vada Pav" />
+          </div>
+          <div class="field four">
+            <label for="price">Price (₹)</label>
+            <input id="price" required type="number" min="0" step="1" placeholder="49" />
+          </div>
+          <div class="field two four">
+            <label for="category">Category</label>
+            <select id="category">
+              <option>Vada Pav</option>
+              <option>Combos</option>
+              <option>Drinks</option>
+              <option>Sides</option>
+              <option>Extras</option>
+            </select>
+          </div>
+          <div class="field six">
+            <label for="veg">Type</label>
+            <select id="veg">
+              <option value="true">Veg</option>
+              <option value="false">Non‑Veg</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="desc">Short description</label>
+            <textarea id="desc" placeholder="Crispy potato patty, soft pav, garlic & green chutney."></textarea>
+          </div>
+          <div class="field six">
+            <label for="image">Image (URL or upload)</label>
+            <input id="image" placeholder="https://…" />
+          </div>
+          <div class="field six">
+            <label for="file">Upload image</label>
+            <input id="file" type="file" accept="image/*" />
+          </div>
+          <div class="field full">
+            <button class="btn primary" type="submit"><i class="ri-save-3-line"></i> Save Item</button>
+            <input type="hidden" id="editId" />
+          </div>
+        </form>
+
+        <div>
+          <div class="section-header"><h3>Items</h3><span class="muted" id="count"></span></div>
+          <table class="table" id="itemsTable">
+            <thead><tr><th>Name</th><th>₹</th><th>Cat</th><th>Type</th><th>Actions</th></tr></thead>
+            <tbody id="itemsBody"></tbody>
+          </table>
+        </div>
+
+        <details>
+          <summary style="cursor:pointer">⚙️ Settings</summary>
+          <div class="grid" style="gap:12px;margin-top:12px">
+            <div class="field six">
+              <label for="shopPhone">WhatsApp Number (with country code)</label>
+              <input id="shopPhone" placeholder="918888888888" />
+            </div>
+            <div class="field six">
+              <label for="adminPass">Admin password</label>
+              <input id="adminPass" placeholder="Change admin password" type="password" />
+            </div>
+            <div>
+              <button id="saveSettings" class="btn primary">Save Settings</button>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Minimal Login Prompt -->
+  <dialog id="loginModal">
+    <div style="padding:18px 18px 8px;border-bottom:1px solid rgba(255,255,255,.06)"><strong>Admin Login</strong></div>
+    <form id="loginForm" style="padding:12px 18px 18px" method="dialog">
+      <div class="field">
+        <label for="loginPass">Password</label>
+        <input id="loginPass" type="password" required placeholder="••••••" />
+      </div>
+      <div style="display:flex;gap:10px;margin-top:12px">
+        <button class="btn primary" type="submit">Login</button>
+        <button class="btn" type="button" id="cancelLogin">Cancel</button>
+      </div>
+      <p class="muted" style="margin-top:8px">Default: <code>singh@admin</code></p>
+    </form>
+  </dialog>
+
+  <script>
+    /***** Data & Storage *****/
+    const STORE_KEY = 'svp.menu.v1';
+    const SETTINGS_KEY = 'svp.settings.v1';
+    const DEFAULT_ITEMS = [
+      { id: crypto.randomUUID(), name:'Classic Vada Pav', price:35, category:'Vada Pav', veg:true, desc:'Crispy batata vada, soft pav, garlic & green chutney.', image:'https://images.unsplash.com/photo-1604908554049-1e4deda43b9d?q=80&w=1200&auto=format&fit=crop' },
+      { id: crypto.randomUUID(), name:'Cheese Vada Pav', price:55, category:'Vada Pav', veg:true, desc:'Melted cheese slice, extra indulgence.', image:'https://images.unsplash.com/photo-1617692855027-8e8b5c346ba8?q=80&w=1200&auto=format&fit=crop' },
+      { id: crypto.randomUUID(), name:'Schezwan Vada Pav', price:50, category:'Vada Pav', veg:true, desc:'Fiery schezwan sauce for spice lovers.', image:'https://images.unsplash.com/photo-1542442828-287ea0d46a37?q=80&w=1200&auto=format&fit=crop' },
+      { id: crypto.randomUUID(), name:'Misal Pav', price:90, category:'Combos', veg:true, desc:'Sprouts curry, farsan, pav & onions.', image:'https://images.unsplash.com/photo-1701087315375-2a45e90313c1?q=80&w=1200&auto=format&fit=crop' },
+      { id: crypto.randomUUID(), name:'Cutting Chai', price:15, category:'Drinks', veg:true, desc:'Strong & kadak, Mumbai style.', image:'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1200&auto=format&fit=crop' },
+      { id: crypto.randomUUID(), name:'Cold Coffee', price:90, category:'Drinks', veg:true, desc:'Chilled, creamy and refreshing.', image:'https://images.unsplash.com/photo-1481391319762-47dff72954d9?q=80&w=1200&auto=format&fit=crop' },
+    ];
+
+    function loadItems(){
+      const raw = localStorage.getItem(STORE_KEY);
+      return raw ? JSON.parse(raw) : DEFAULT_ITEMS;
+    }
+    function saveItems(items){ localStorage.setItem(STORE_KEY, JSON.stringify(items)); }
+
+    function loadSettings(){
+      const raw = localStorage.getItem(SETTINGS_KEY);
+      return raw ? JSON.parse(raw) : { phone:'', adminPass:'singh@admin' };
+    }
+    function saveSettings(s){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(s)); }
+
+    let items = loadItems();
+    let settings = loadSettings();
+
+    /***** Render Menu *****/
+    const menuGrid = document.getElementById('menuGrid');
+    const categoryFilter = document.getElementById('categoryFilter');
+
+    function renderCategories(){
+      const cats = Array.from(new Set(items.map(i=>i.category))).sort();
+      categoryFilter.innerHTML = '<option value="all">All Categories</option>' + cats.map(c=>`<option>${c}</option>`).join('');
+    }
+
+    function rupee(n){ return '₹' + Number(n).toFixed(0); }
+
+    function renderMenu(){
+      const cval = categoryFilter.value;
+      const filtered = cval==='all' ? items : items.filter(i=>i.category===cval);
+      menuGrid.innerHTML = filtered.map(cardHTML).join('');
+    }
+
+    function cardHTML(i){
+      return `
+        <article class="card" aria-label="${i.name}">
+          <div class="thumb">${i.image ? `<img alt="${i.name}" loading="lazy" src="${i.image}" />` : `<i class='ri-image-2-line' style='font-size:36px;color:#4b5568'></i>`}</div>
+          <div class="card-body">
+            <div class="title-row">
+              <div class="title">${i.name}</div>
+              <div class="veg"><span class="veg-dot" style="background:${i.veg? 'transparent':'#ef4444'}"></span>${i.veg? 'Veg':'Non‑Veg'}</div>
+            </div>
+            <div class="desc">${i.desc||''}</div>
+            <div class="title-row"><div class="price">${rupee(i.price)}</div>
+              <div class="card-actions">
+                <button class="btn" onclick="addToOrder('${i.id}')"><i class="ri-add-line"></i> Add</button>
+                <button class="btn" onclick="editItem('${i.id}')"><i class="ri-pencil-line"></i></button>
+              </div>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    categoryFilter.addEventListener('change', renderMenu);
+
+    /***** Order via WhatsApp *****/
+    let cart = [];
+    function addToOrder(id){
+      const it = items.find(x=>x.id===id); if(!it) return;
+      const existing = cart.find(c=>c.id===id);
+      if(existing) existing.qty++; else cart.push({id, qty:1});
+      waBtnUpdate();
+    }
+
+    const waBtn = document.getElementById('waBtn');
+    function waBtnUpdate(){
+      const lines = cart.map(c=>{ const it = items.find(i=>i.id===c.id); return `• ${it.name} x ${c.qty} = ${rupee(it.price*c.qty)}`; });
+      const total = cart.reduce((s,c)=>{ const it = items.find(i=>i.id===c.id);return s + it.price*c.qty; },0);
+      const phone = settings.phone || '919000000000'; // fallback demo
+      const msg = encodeURIComponent(`*Singh Vada Pav – Order*\n${lines.join('\n')}\nTotal: ${rupee(total)}`);
+      waBtn.href = `https://wa.me/${phone}?text=${msg}`;
+      waBtn.textContent = cart.length? `WhatsApp Order (${cart.length})` : 'WhatsApp Order';
+    }
+
+    /***** Admin Modal & Auth *****/
+    const adminModal = document.getElementById('adminModal');
+    const loginModal = document.getElementById('loginModal');
+    const openAdmin = document.getElementById('openAdmin');
+    const closeAdmin = document.getElementById('closeAdmin');
+    const loginForm = document.getElementById('loginForm');
+    const loginPass = document.getElementById('loginPass');
+    const cancelLogin = document.getElementById('cancelLogin');
+
+    function ensureAuth(){
+      const authed = sessionStorage.getItem('svp.authed')==='1';
+      if(authed){ adminModal.showModal(); return; }
+      loginModal.showModal();
+    }
+    openAdmin.addEventListener('click', ensureAuth);
+    document.getElementById('adminLink').addEventListener('click', (e)=>{ e.preventDefault(); ensureAuth(); });
+    cancelLogin.addEventListener('click', ()=> loginModal.close());
+
+    loginForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const ok = (loginPass.value || '') === (settings.adminPass || 'singh@admin');
+      if(ok){ sessionStorage.setItem('svp.authed','1'); loginModal.close(); adminModal.showModal(); loginPass.value=''; }
+      else{ alert('Wrong password'); }
+    });
+
+    closeAdmin.addEventListener('click', ()=> adminModal.close());
+
+    /***** CRUD *****/
+    const itemForm = document.getElementById('itemForm');
+    const fileInput = document.getElementById('file');
+    const itemsBody = document.getElementById('itemsBody');
+    const count = document.getElementById('count');
+
+    function renderTable(){
+      count.textContent = `${items.length} items`;
+      itemsBody.innerHTML = items.map(i=>`
+        <tr class="row">
+          <td>${i.name}</td>
+          <td>${rupee(i.price)}</td>
+          <td><span class="pill">${i.category}</span></td>
+          <td>${i.veg? 'Veg':'Non‑Veg'}</td>
+          <td>
+            <button class="btn" onclick="editItem('${i.id}')"><i class="ri-pencil-line"></i> Edit</button>
+            <button class="btn" onclick="delItem('${i.id}')"><i class="ri-delete-bin-6-line"></i> Delete</button>
+          </td>
+        </tr>`).join('');
+    }
+
+    function resetForm(){
+      itemForm.reset();
+      document.getElementById('editId').value='';
+    }
+
+    function editItem(id){
+      const it = items.find(x=>x.id===id); if(!it) return;
+      ensureAuth();
+      document.getElementById('name').value = it.name;
+      document.getElementById('price').value = it.price;
+      document.getElementById('category').value = it.category;
+      document.getElementById('veg').value = String(!!it.veg);
+      document.getElementById('desc').value = it.desc||'';
+      document.getElementById('image').value = it.image||'';
+      document.getElementById('editId').value = it.id;
+    }
+
+    function delItem(id){
+      if(!confirm('Delete this item?')) return;
+      items = items.filter(i=> i.id!==id);
+      saveItems(items); renderMenu(); renderTable(); renderCategories();
+    }
+
+    itemForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const id = document.getElementById('editId').value || crypto.randomUUID();
+      const obj = {
+        id,
+        name: document.getElementById('name').value.trim(),
+        price: Number(document.getElementById('price').value||0),
+        category: document.getElementById('category').value.trim(),
+        veg: document.getElementById('veg').value==='true',
+        desc: document.getElementById('desc').value.trim(),
+        image: document.getElementById('image').value.trim()
+      };
+      const exists = items.some(i=>i.id===id);
+      if(exists){ items = items.map(i=> i.id===id ? obj : i); }
+      else { items = [obj, ...items]; }
+      saveItems(items); renderMenu(); renderTable(); renderCategories(); resetForm();
+      adminModal.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    fileInput.addEventListener('change', async (e)=>{
+      const file = e.target.files?.[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = ()=>{ document.getElementById('image').value = reader.result; };
+      reader.readAsDataURL(file);
+    });
+
+    /***** Import / Export *****/
+    const exportBtn = document.getElementById('exportBtn');
+    const importInput = document.getElementById('importInput');
+
+    exportBtn.addEventListener('click', ()=>{
+      const blob = new Blob([JSON.stringify({ items, settings }, null, 2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'singh-vada-pav-data.json'; a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    importInput.addEventListener('change', async (e)=>{
+      const file = e.target.files?.[0];
+      if(!file) return;
+      const text = await file.text();
+      try{
+        const data = JSON.parse(text);
+        if(data.items && Array.isArray(data.items)) items = data.items;
+        if(data.settings) settings = {...settings, ...data.settings};
+        saveItems(items); saveSettings(settings);
+        renderCategories(); renderMenu(); renderTable(); waBtnUpdate();
+        alert('Imported successfully');
+      }catch(err){ alert('Invalid JSON file'); }
+    });
+
+    /***** Settings *****/
+    const shopPhone = document.getElementById('shopPhone');
+    const adminPass = document.getElementById('adminPass');
+    document.getElementById('saveSettings').addEventListener('click', ()=>{
+      settings.phone = shopPhone.value.trim();
+      if(adminPass.value.trim()) settings.adminPass = adminPass.value.trim();
+      saveSettings(settings);
+      waBtnUpdate();
+      alert('Settings saved');
+    });
+
+    /***** Quick Add FAB *****/
+    document.getElementById('quickAdd').addEventListener('click', ()=>{
+      const name = prompt('Item name?'); if(!name) return;
+      const price = Number(prompt('Price ₹?')||0);
+      items = [{ id: crypto.randomUUID(), name, price, category:'Vada Pav', veg:true, desc:'', image:'' }, ...items];
+      saveItems(items); renderMenu(); renderTable(); renderCategories();
+    });
+
+    /***** Boot *****/
+    function boot(){
+      document.getElementById('year').textContent = new Date().getFullYear();
+      shopPhone.value = settings.phone || '';
+      adminPass.value = '';
+      renderCategories();
+      renderMenu();
+      renderTable();
+      waBtnUpdate();
+    }
+    boot();
+
+    // expose a couple helpers to window for inline handlers
+    window.addToOrder = addToOrder;
+    window.editItem = editItem;
+    window.delItem = delItem;
+  </script>
+</body>
+</html>
